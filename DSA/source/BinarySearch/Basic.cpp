@@ -379,3 +379,41 @@ int findHowManyTimesTheArrayIsRotated(vector<int>& nums) {
 	return low;
 
 }
+
+
+// Single non duplicate
+int singleNonDuplicate(vector<int>& nums) {
+
+	int n = nums.size();
+	int low = 0, high = n - 1;
+
+	while (low < high) {
+		int middle = (low + high) / 2, lowCount = 0, highCount = 0;
+		if (nums[middle] == nums[middle - 1]) {
+			int lowCount = middle - 2 - low;
+			int highCount = high - middle + 1;
+			if (lowCount % 2 == 0) {
+				high = middle - 2;
+			}
+			else {
+				low = middle + 1;
+			}
+		}
+		else if (nums[middle] == nums[middle + 1]) {
+			int lowCount = middle - 1 - low;
+			int highCount = high - middle + 2;
+			if (lowCount % 2 == 0) {
+				high = middle - 1;
+			}
+			else {
+				low = middle + 2;
+			}
+		}
+		else {
+			return nums[middle];
+		}
+	}
+
+	return nums[low];
+
+}

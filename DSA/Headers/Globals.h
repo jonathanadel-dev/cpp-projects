@@ -136,3 +136,4 @@ int searchInRotatedSortedArray(vector<int>& nums, int target);
 bool searchInRotatedSortedArrayTwo(vector<int>& nums, int target);
 int findMinimumInRotatedSortedArray(vector<int>& nums);
 int findHowManyTimesTheArrayIsRotated(vector<int>& nums);
+int singleNonDuplicate(vector<int>& nums);
