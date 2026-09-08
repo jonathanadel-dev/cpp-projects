@@ -358,3 +358,24 @@ int findMinimumInRotatedSortedArray(vector<int>& nums) {
 	}
 	return nums[low];
 }
+
+
+
+// Find how many times the array is rotated
+int findHowManyTimesTheArrayIsRotated(vector<int>& nums) {
+
+	int n = nums.size();
+	int low = 0, high = n - 1;
+
+	while (low < high) {
+		int middle = (low + high) / 2;
+		if (nums[middle] > nums[high]) {
+			low = middle + 1;
+		}
+		else {
+			high = middle;
+		}
+	}
+	return low;
+
+}
