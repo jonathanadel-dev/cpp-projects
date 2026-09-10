@@ -389,31 +389,47 @@ int singleNonDuplicate(vector<int>& nums) {
 
 	while (low < high) {
 		int middle = (low + high) / 2, lowCount = 0, highCount = 0;
-		if (nums[middle] == nums[middle - 1]) {
-			int lowCount = middle - 2 - low;
-			int highCount = high - middle + 1;
-			if (lowCount % 2 == 0) {
-				high = middle - 2;
-			}
-			else {
-				low = middle + 1;
-			}
-		}
-		else if (nums[middle] == nums[middle + 1]) {
-			int lowCount = middle - 1 - low;
-			int highCount = high - middle + 2;
-			if (lowCount % 2 == 0) {
-				high = middle - 1;
-			}
-			else {
-				low = middle + 2;
-			}
+
+		if (middle % 2 == 1)
+			middle--;
+
+		if (nums[middle] == nums[middle + 1]) {
+			low = middle + 2;
 		}
 		else {
-			return nums[middle];
+			high = middle;
 		}
 	}
 
 	return nums[low];
+
+}
+
+
+// Find peak element
+int findPeakElement(vector<int>& nums) {
+
+	int n = nums.size();
+
+	if (n == 1) return 0;
+	if (nums[0] > nums[1]) return 0;
+	if (nums[n - 1] > nums[n - 2]) return n - 1;
+
+	int low = 1, high = n - 2;
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (nums[middle] > nums[middle - 1] && nums[middle] > nums[middle + 1]) {
+			return middle;
+		}
+		else if (nums[middle] < nums[middle + 1]) {
+			low = middle + 1;
+		}
+		else {
+			high = middle - 1;
+		}
+	}
+
+	return -1;
 
 }
