@@ -433,3 +433,28 @@ int findPeakElement(vector<int>& nums) {
 	return -1;
 
 }
+
+
+// Find the floor square root
+int findFloorSquareRoot(int n) {
+
+	int low = 1, high = n, ans = -1;
+
+	while (low <= high) {
+
+		int middle = (high + low) / 2;
+		int product = middle * middle;
+
+		if (product <= n) {
+			ans = middle;
+			low = middle + 1;
+		}
+		else {
+			high = middle - 1;
+		}
+
+	}
+
+	return ans;
+
+}

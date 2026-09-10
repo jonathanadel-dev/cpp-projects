@@ -138,3 +138,4 @@ int findMinimumInRotatedSortedArray(vector<int>& nums);
 int findHowManyTimesTheArrayIsRotated(vector<int>& nums);
 int singleNonDuplicate(vector<int>& nums);
 int findPeakElement(vector<int>& nums);
+int findFloorSquareRoot(int n);
