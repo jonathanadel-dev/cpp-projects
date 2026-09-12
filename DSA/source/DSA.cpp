@@ -9,6 +9,6 @@ using namespace std;
 int main()
 {
 
-	cout << findFloorSquareRoot(9);
+	cout << findNthRoot(4, 81);
 
 }

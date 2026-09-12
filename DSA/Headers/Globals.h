@@ -139,3 +139,4 @@ int findHowManyTimesTheArrayIsRotated(vector<int>& nums);
 int singleNonDuplicate(vector<int>& nums);
 int findPeakElement(vector<int>& nums);
 int findFloorSquareRoot(int n);
+int findNthRoot(int n, int m);

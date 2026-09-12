@@ -458,3 +458,32 @@ int findFloorSquareRoot(int n) {
 	return ans;
 
 }
+
+
+// Find the nth root of m
+int findNthRoot(int n, int m){
+
+	int low = 1, high = m;
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		long long product = 1;
+
+		for (int i = 0; i < n; i++) {
+			product *= middle;
+			if (product > m) break;
+		}
+
+		if (product == m) {
+			return middle;
+		}
+		else if (product < m) {
+			low = middle + 1;
+		}
+		else {
+			high = middle - 1;
+		}
+	}
+
+	return -1;
+
+}
