@@ -487,3 +487,36 @@ int findNthRoot(int n, int m){
 	return -1;
 
 }
+
+
+// Minimum eating speed
+int minEatingSpeed(vector<int>& piles, int h) {
+
+	sort(piles.begin(), piles.end());
+
+	int n = piles.size();
+	int low = 1, high = piles[n - 1], ans = INT_MAX;
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		long long hours = 0;
+
+		// Calculate total number of hours
+		for (int i = 0; i < n; i++) {
+			int hour = (middle + piles[i] - 1) / middle;
+			hours += hour;
+		}
+
+		if (hours <= h) {
+			ans = min(ans, middle);
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+
+	}
+
+	return ans;
+
+}
