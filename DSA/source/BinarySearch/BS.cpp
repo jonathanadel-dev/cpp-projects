@@ -520,3 +520,50 @@ int minEatingSpeed(vector<int>& piles, int h) {
 	return ans;
 
 }
+
+
+
+// Minimum days to collect bouquets
+int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k) {
+
+	int n = bloomDay.size();
+	int low = *min_element(bloomDay.begin(), bloomDay.end());
+	int high = *max_element(bloomDay.begin(), bloomDay.end());
+	int ans = -1;
+
+	function<bool(int)> isCollected = [&](int days) {
+
+		int bouquetsCollected = 0;
+		int flowersCollected = 0;
+
+		for (int i = 0; i < n; i++) {
+			if (days >= bloomDay[i]) {
+				flowersCollected++;
+				if (flowersCollected == k) {
+					bouquetsCollected++;
+					flowersCollected = 0;
+				}
+			}
+			else {
+				flowersCollected = 0;
+			}
+		}
+
+		return bouquetsCollected >= m;
+
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isCollected(middle)) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+}
