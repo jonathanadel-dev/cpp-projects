@@ -522,7 +522,6 @@ int minEatingSpeed(vector<int>& piles, int h) {
 }
 
 
-
 // Minimum days to collect bouquets
 int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k) {
 
@@ -586,6 +585,44 @@ int smallestDivisor(vector<int>& nums, int threshold) {
 	while (low <= high) {
 		int middle = (high + low) / 2;
 		if (isSmallerThanThreshold(middle)) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+}
+
+
+// Ship within days
+int shipWithinDays(vector<int>& weights, int days) {
+
+	int n = weights.size(), ans = INT_MAX;
+	int low = *max_element(weights.begin(), weights.end());
+	int high = accumulate(weights.begin(), weights.end(), 0);
+
+	auto isEnough = [&](int x) {
+		int daysRequired = 1;
+		int capacity = x;
+		for (int i = 0; i < n; i++) {
+			if (weights[i] > capacity) {
+				capacity = x - weights[i];
+				daysRequired++;
+			}
+			else {
+				capacity -= weights[i];
+			}
+		}
+		return daysRequired <= days;
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isEnough(middle)) {
 			ans = middle;
 			high = middle - 1;
 		}
