@@ -567,3 +567,33 @@ int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k) {
 	return ans;
 
 }
+
+
+// Smallest divisor
+int smallestDivisor(vector<int>& nums, int threshold) {
+
+	int n = nums.size(), ans = INT_MAX;
+	int low = 1, high = *max_element(nums.begin(), nums.end());
+
+	auto isSmallerThanThreshold = [&](int x) {
+		int result = 0;
+		for (int i = 0; i < n; i++) {
+			result += (nums[i] + x - 1) / x;
+		}
+		return result <= threshold;
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isSmallerThanThreshold(middle)) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+}

@@ -141,4 +141,5 @@ int findPeakElement(vector<int>& nums);
 int findFloorSquareRoot(int n);
 int findNthRoot(int n, int m);
 int minEatingSpeed(vector<int>& piles, int h);
-int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k)
+int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k);
+int smallestDivisor(vector<int>& nums, int threshold);
