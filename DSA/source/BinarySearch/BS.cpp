@@ -634,3 +634,25 @@ int shipWithinDays(vector<int>& weights, int days) {
 	return ans;
 
 }
+
+
+// Kth missing number
+int findKthMissingNumber(vector<int>& arr, int k) {
+
+	int n = arr.size();
+	int low = 0, high = n - 1;
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		int missings = arr[middle] - 1 - middle;
+		if (missings < k) {
+			low = middle + 1;
+		}
+		else {
+			high = middle - 1;
+		}
+	}
+
+	return low + k;
+
+}
