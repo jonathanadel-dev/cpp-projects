@@ -698,3 +698,44 @@ int aggressiveCows(vector<int>& nums, int k) {
 	return ans;
 
 }
+
+
+// Minimized max sum in subarrays
+int minimizedMaxSumInSubarrays(vector<int>& nums, int k) {
+
+	int n = nums.size(), ans = INT_MAX;
+	int low = nums[0];
+	int high = accumulate(nums.begin(), nums.end(), 0);
+
+	auto isLargestMinimized = [&](int x) {
+		int subarraysLeft = k;
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			if (sum + nums[i] <= x) {
+				sum += nums[i];
+			}
+			else {
+				subarraysLeft--;
+				if (subarraysLeft == 0 || nums[i] > x) {
+					return false;
+				}
+				sum = nums[i];
+			}
+		}
+		return true;
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isLargestMinimized(middle)) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+}
