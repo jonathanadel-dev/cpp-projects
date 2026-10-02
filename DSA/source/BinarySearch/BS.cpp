@@ -656,3 +656,45 @@ int findKthMissingNumber(vector<int>& arr, int k) {
 	return low + k;
 
 }
+
+
+
+// Aggressive cows
+int aggressiveCows(vector<int>& nums, int k) {
+
+	sort(nums.begin(), nums.end());
+
+	int n = nums.size();
+	int low = 1, ans = -1;
+	int high = nums[n - 1] - nums[0],
+
+		auto isFit = [&](int x) {
+
+		int cows = k - 1, lastCowIndex = 0;
+
+		for (int i = 1; i < n; i++) {
+			if (nums[i] - nums[lastCowIndex] >= x) {
+				cows--;
+				lastCowIndex = i;
+			}
+			if (cows == 0) break;
+		}
+
+		return cows == 0;
+
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isFit(middle)) {
+			ans = middle;
+			low = middle + 1;
+		}
+		else {
+			high = middle - 1;
+		}
+	}
+
+	return ans;
+
+}

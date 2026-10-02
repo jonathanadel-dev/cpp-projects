@@ -145,3 +145,4 @@ int minDaysToCollectBouquets(vector<int>& bloomDay, int m, int k);
 int smallestDivisor(vector<int>& nums, int threshold);
 int shipWithinDays(vector<int>& weights, int days);
 int findKthMissingNumber(vector<int>& arr, int k);
+int aggressiveCows(vector<int>& nums, int k);
