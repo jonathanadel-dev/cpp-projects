@@ -739,3 +739,48 @@ int minimizedMaxSumInSubarrays(vector<int>& nums, int k) {
 	return ans;
 
 }
+
+
+// Book allocation
+int bookAllocation(vector<int>& nums, int m) {
+
+	int n = nums.size();
+	int low = -1, high = 0, ans = -1;
+
+	if (m > n) return -1;
+
+	for (auto book : nums) {
+		low = max(low, book);
+		high += book;
+	}
+
+	auto isMaximum = [&](int x) {
+		int students = m;
+		int pages = 0;
+		for (auto bookPages : nums) {
+			if (pages + bookPages <= x) {
+				pages += bookPages;
+			}
+			else {
+				students--;
+				if (students == 0) return false;
+				pages = bookPages;
+			}
+		}
+		return true;
+		};
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (isMaximum(middle)) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+};
