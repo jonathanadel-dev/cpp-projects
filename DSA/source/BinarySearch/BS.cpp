@@ -784,3 +784,51 @@ int bookAllocation(vector<int>& nums, int m) {
 	return ans;
 
 };
+
+
+
+// Minimize maximum distance
+double minimiseMaxDistance(vector<int>& arr, int k) {
+
+	int n = arr.size();
+
+	double low = 0.0;
+	double high = 0.0;
+
+
+	for (int i = 1; i < n; i++) {
+		high = max(high, (double)(arr[i] - arr[i - 1]));
+	}
+
+
+	auto canPlace = [&](double maxDist) {
+
+		int stations = 0;
+
+		for (int i = 1; i < n; i++) {
+			double gap = arr[i] - arr[i - 1];
+
+			stations += (int)ceil(gap / maxDist) - 1;
+
+			if (stations > k)
+				return false;
+		}
+
+		return true;
+	};
+
+
+	while (high - low > 1e-6) {
+
+		double mid = low + (high - low) / 2.0;
+
+		if (canPlace(mid)) {
+			high = mid;
+		}
+		else {
+			low = mid;
+		}
+	}
+
+	return high;
+}
