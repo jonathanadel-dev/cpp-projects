@@ -149,3 +149,4 @@ int aggressiveCows(vector<int>& nums, int k);
 int minimizedMaxSumInSubarrays(vector<int>& nums, int k);
 int bookAllocation(vector<int>& nums, int m);
 double minimiseMaxDistance(vector<int>& arr, int k);
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
