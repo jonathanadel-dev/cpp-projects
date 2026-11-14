@@ -885,3 +885,35 @@ int kthElementOfSortedArrays(vector<int>& a, vector<int>& b, int k) {
 	return 0;
 
 }
+
+
+// Row with maximum ones
+int rowWithMax1s(vector<vector<int>>& mat) {
+
+	int index = -1, maxOnes = 0;
+
+	for (int i = 0; i < mat.size(); i++) {
+		int low = 0, high = mat[i].size() - 1;
+		int oneIndex = -1;
+		while (low <= high) {
+			int middle = (low + high) / 2;
+			if (mat[i][middle] == 1) {
+				high = middle - 1;
+				oneIndex = middle;
+			}
+			else {
+				low = middle + 1;
+			}
+		}
+		if (oneIndex != -1) {
+			int ones = mat[i].size() - oneIndex;
+			if (ones > maxOnes) {
+				index = i;
+				maxOnes = ones;
+			}
+		}
+	}
+
+	return index;
+
+}

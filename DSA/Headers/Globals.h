@@ -151,3 +151,4 @@ int bookAllocation(vector<int>& nums, int m);
 double minimiseMaxDistance(vector<int>& arr, int k);
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 int kthElementOfSortedArrays(vector<int>& a, vector<int>& b, int k);
+int rowWithMax1s(vector<vector<int>>& mat);
