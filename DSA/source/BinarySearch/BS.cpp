@@ -917,3 +917,42 @@ int rowWithMax1s(vector<vector<int>>& mat) {
 	return index;
 
 }
+
+
+// Search matrix
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+
+	int lowR = 0, highR = matrix.size() - 1;
+	while (lowR <= highR) {
+		int middleR = (lowR + highR) / 2;
+		int rowSize = matrix[middleR].size();
+		if (target > matrix[middleR][rowSize - 1]) {
+			lowR = middleR + 1;
+		}
+		else if (target < matrix[middleR][0]) {
+			highR = middleR - 1;
+		}
+		else {
+
+			int low = 0, high = rowSize - 1;
+			while (low <= high) {
+				int middle = (high + low) / 2;
+				if (matrix[middleR][middle] > target) {
+					high = middle - 1;
+				}
+				else if (matrix[middleR][middle] < target) {
+					low = middle + 1;
+				}
+				else {
+					return true;
+				}
+			}
+
+			return false;
+
+		}
+	}
+
+	return false;
+
+}
