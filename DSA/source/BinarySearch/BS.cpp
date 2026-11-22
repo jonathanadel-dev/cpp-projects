@@ -979,3 +979,43 @@ bool searchMatrixTwo(vector<vector<int>>& matrix, int target) {
 	return false;
 
 }
+
+
+// Find peak grid
+vector<int> findPeakGrid(vector<vector<int>>& mat) {
+
+	int rows = mat.size(), columns = mat[0].size();
+	int currentRow = 0, currentColumn = 0;
+	vector<int> ans = { 0, 0 };
+
+	while (currentRow < rows && currentRow >= 0 && currentColumn < columns && currentColumn >= 0) {
+
+		int element = mat[currentRow][currentColumn];
+
+		// Up
+		if (currentRow > 0 && element < mat[currentRow - 1][currentColumn]) {
+			currentRow--;
+		}
+		// Down
+		else if (currentRow < rows - 1 && element < mat[currentRow + 1][currentColumn]) {
+			currentRow++;
+		}
+		// Right
+		else if (currentColumn < columns - 1 && element < mat[currentRow][currentColumn + 1]) {
+			currentColumn++;
+		}
+		// Left
+		else if (currentColumn > 0 && element < mat[currentRow][currentColumn - 1]) {
+			currentColumn--;
+		}
+		else {
+			ans[0] = currentRow;
+			ans[1] = currentColumn;
+			return ans;
+		}
+
+	}
+
+	return ans;
+
+}

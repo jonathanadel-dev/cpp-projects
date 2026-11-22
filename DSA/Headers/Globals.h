@@ -154,3 +154,4 @@ int kthElementOfSortedArrays(vector<int>& a, vector<int>& b, int k);
 int rowWithMax1s(vector<vector<int>>& mat);
 bool searchMatrix(vector<vector<int>>& matrix, int target);
 bool searchMatrixTwo(vector<vector<int>>& matrix, int target);
+vector<int> findPeakGrid(vector<vector<int>>& mat);
