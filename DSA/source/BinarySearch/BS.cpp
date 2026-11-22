@@ -601,37 +601,37 @@ int smallestDivisor(vector<int>& nums, int threshold) {
 // Ship within days
 int shipWithinDays(vector<int>& weights, int days) {
 
-	int n = weights.size(), ans = INT_MAX;
-	int low = *max_element(weights.begin(), weights.end());
-	int high = accumulate(weights.begin(), weights.end(), 0);
+	//int n = weights.size(), ans = INT_MAX;
+	//int low = *max_element(weights.begin(), weights.end());
+	//int high = accumulate(weights.begin(), weights.end(), 0);
 
-	auto isEnough = [&](int x) {
-		int daysRequired = 1;
-		int capacity = x;
-		for (int i = 0; i < n; i++) {
-			if (weights[i] > capacity) {
-				capacity = x - weights[i];
-				daysRequired++;
-			}
-			else {
-				capacity -= weights[i];
-			}
-		}
-		return daysRequired <= days;
-		};
+	//auto isEnough = [&](int x) {
+	//	int daysRequired = 1;
+	//	int capacity = x;
+	//	for (int i = 0; i < n; i++) {
+	//		if (weights[i] > capacity) {
+	//			capacity = x - weights[i];
+	//			daysRequired++;
+	//		}
+	//		else {
+	//			capacity -= weights[i];
+	//		}
+	//	}
+	//	return daysRequired <= days;
+	//	};
 
-	while (low <= high) {
-		int middle = (high + low) / 2;
-		if (isEnough(middle)) {
-			ans = middle;
-			high = middle - 1;
-		}
-		else {
-			low = middle + 1;
-		}
-	}
+	//while (low <= high) {
+	//	int middle = (high + low) / 2;
+	//	if (isEnough(middle)) {
+	//		ans = middle;
+	//		high = middle - 1;
+	//	}
+	//	else {
+	//		low = middle + 1;
+	//	}
+	//}
 
-	return ans;
+	return 0;
 
 }
 
@@ -662,40 +662,40 @@ int findKthMissingNumber(vector<int>& arr, int k) {
 // Aggressive cows
 int aggressiveCows(vector<int>& nums, int k) {
 
-	sort(nums.begin(), nums.end());
+	//sort(nums.begin(), nums.end());
 
-	int n = nums.size();
-	int low = 1, ans = -1;
-	int high = nums[n - 1] - nums[0],
+	//int n = nums.size();
+	//int low = 1, ans = -1;
+	//int high = nums[n - 1] - nums[0],
 
-		auto isFit = [&](int x) {
+	//	auto isFit = [&](int x) {
 
-		int cows = k - 1, lastCowIndex = 0;
+	//	int cows = k - 1, lastCowIndex = 0;
 
-		for (int i = 1; i < n; i++) {
-			if (nums[i] - nums[lastCowIndex] >= x) {
-				cows--;
-				lastCowIndex = i;
-			}
-			if (cows == 0) break;
-		}
+	//	for (int i = 1; i < n; i++) {
+	//		if (nums[i] - nums[lastCowIndex] >= x) {
+	//			cows--;
+	//			lastCowIndex = i;
+	//		}
+	//		if (cows == 0) break;
+	//	}
 
-		return cows == 0;
+	//	return cows == 0;
 
-		};
+	//	};
 
-	while (low <= high) {
-		int middle = (high + low) / 2;
-		if (isFit(middle)) {
-			ans = middle;
-			low = middle + 1;
-		}
-		else {
-			high = middle - 1;
-		}
-	}
+	//while (low <= high) {
+	//	int middle = (high + low) / 2;
+	//	if (isFit(middle)) {
+	//		ans = middle;
+	//		low = middle + 1;
+	//	}
+	//	else {
+	//		high = middle - 1;
+	//	}
+	//}
 
-	return ans;
+	return 0;
 
 }
 
@@ -703,40 +703,40 @@ int aggressiveCows(vector<int>& nums, int k) {
 // Minimized max sum in subarrays
 int minimizedMaxSumInSubarrays(vector<int>& nums, int k) {
 
-	int n = nums.size(), ans = INT_MAX;
-	int low = nums[0];
-	int high = accumulate(nums.begin(), nums.end(), 0);
+	//int n = nums.size(), ans = INT_MAX;
+	//int low = nums[0];
+	//int high = accumulate(nums.begin(), nums.end(), 0);
 
-	auto isLargestMinimized = [&](int x) {
-		int subarraysLeft = k;
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			if (sum + nums[i] <= x) {
-				sum += nums[i];
-			}
-			else {
-				subarraysLeft--;
-				if (subarraysLeft == 0 || nums[i] > x) {
-					return false;
-				}
-				sum = nums[i];
-			}
-		}
-		return true;
-		};
+	//auto isLargestMinimized = [&](int x) {
+	//	int subarraysLeft = k;
+	//	int sum = 0;
+	//	for (int i = 0; i < n; i++) {
+	//		if (sum + nums[i] <= x) {
+	//			sum += nums[i];
+	//		}
+	//		else {
+	//			subarraysLeft--;
+	//			if (subarraysLeft == 0 || nums[i] > x) {
+	//				return false;
+	//			}
+	//			sum = nums[i];
+	//		}
+	//	}
+	//	return true;
+	//	};
 
-	while (low <= high) {
-		int middle = (high + low) / 2;
-		if (isLargestMinimized(middle)) {
-			ans = middle;
-			high = middle - 1;
-		}
-		else {
-			low = middle + 1;
-		}
-	}
+	//while (low <= high) {
+	//	int middle = (high + low) / 2;
+	//	if (isLargestMinimized(middle)) {
+	//		ans = middle;
+	//		high = middle - 1;
+	//	}
+	//	else {
+	//		low = middle + 1;
+	//	}
+	//}
 
-	return ans;
+	return 0;
 
 }
 
@@ -865,7 +865,7 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 int kthElementOfSortedArrays(vector<int>& a, vector<int>& b, int k) {
 
 	int m = a.size(), n = b.size();
-	if (m > n) return kthElement(b, a, k);
+	if (m > n) return kthElementOfSortedArrays(b, a, k);
 
 	int low = max(0, k - n), high = min(k, m);
 
@@ -950,6 +950,29 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
 
 			return false;
 
+		}
+	}
+
+	return false;
+
+}
+
+
+// Search matrix
+bool searchMatrixTwo(vector<vector<int>>& matrix, int target) {
+
+	int rows = matrix.size(), columns = matrix[0].size();
+	int currentRow = 0, currentColumn = columns - 1;
+
+	while (currentRow < rows && currentColumn >= 0) {
+		if (matrix[currentRow][currentColumn] > target) {
+			currentColumn--;
+		}
+		else if (matrix[currentRow][currentColumn] < target) {
+			currentRow++;
+		}
+		else {
+			return true;
 		}
 	}
 

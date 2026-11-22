@@ -153,3 +153,4 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);
 int kthElementOfSortedArrays(vector<int>& a, vector<int>& b, int k);
 int rowWithMax1s(vector<vector<int>>& mat);
 bool searchMatrix(vector<vector<int>>& matrix, int target);
+bool searchMatrixTwo(vector<vector<int>>& matrix, int target);

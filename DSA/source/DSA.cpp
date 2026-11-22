@@ -8,7 +8,8 @@ using namespace std;
 
 int main()
 {
-
-	cout << findNthRoot(4, 81);
+	string number = "321";
+	cout << next_permutation(number.begin(), number.end());
+	//cout << findNthRoot(4, 81);
 
 }
