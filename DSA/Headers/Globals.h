@@ -156,3 +156,7 @@ bool searchMatrix(vector<vector<int>>& matrix, int target);
 bool searchMatrixTwo(vector<vector<int>>& matrix, int target);
 vector<int> findPeakGrid(vector<vector<int>>& mat);
 int findMedian(vector<vector<int>>& matrix);
+
+
+// Strings
+string removeOuterParentheses(string s);
