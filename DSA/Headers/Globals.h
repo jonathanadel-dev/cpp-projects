@@ -163,3 +163,4 @@ string removeOuterParentheses(string s);
 int maxDepth(string s);
 int romanToInt(string s);
 int myAtoi(string s);
+long long countSubstrings(string s);

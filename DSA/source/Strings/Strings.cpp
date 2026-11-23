@@ -198,3 +198,25 @@ int myAtoi(string s) {
     return number;
 
 }
+
+
+// Count substrings
+long long countSubstrings(string s) {
+    int n = s.size();
+    long long ans = 0;
+
+    for (int i = 0; i < n; i++) {
+        int freq[10] = { 0 };
+        int odd = 0;
+
+        for (int j = i; j < n; j++) {
+            int c = s[j] - 'a';
+            freq[c]++;
+            if (freq[c] % 2 == 1) odd++;
+            else odd--;
+
+            if (odd <= 1) ans++;
+        }
+    }
+    return ans;
+}

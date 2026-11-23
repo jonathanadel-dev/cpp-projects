@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 	string number = "321";
-	cout << next_permutation(number.begin(), number.end());
+	cout << 0 - 'a';
 	//cout << findNthRoot(4, 81);
 
 }
