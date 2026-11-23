@@ -1019,3 +1019,32 @@ vector<int> findPeakGrid(vector<vector<int>>& mat) {
 	return ans;
 
 }
+
+
+// Find median
+int findMedian(vector<vector<int>>& matrix) {
+
+	int rows = matrix.size(), columns = matrix[0].size();
+	int half = (rows * columns) / 2 + 1;
+
+	int low = INT_MAX, high = INT_MIN;
+	for (int i = 0; i < rows; i++) {
+		low = min(low, matrix[i][0]);
+		high = max(high, matrix[i][columns - 1]);
+	}
+
+	while (low < high) {
+		int middle = low + (high - low) / 2;
+
+		int count = 0;
+		for (int i = 0; i < rows; i++) {
+			count += upper_bound(matrix[i].begin(), matrix[i].end(), middle) - matrix[i].begin();
+		}
+
+		if (count >= half) high = middle;
+		else low = middle + 1;
+	}
+
+	return low;
+
+}
