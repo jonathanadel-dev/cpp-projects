@@ -49,3 +49,68 @@ int maxDepth(string s) {
     return maxCount;
 
 }
+
+
+// Roman to int
+int romanToInt(string s) {
+
+    int number = 0;
+
+    auto toNumber = [](char c) {
+
+        int n = 0;
+        switch (c) {
+        case 'I': n = 1; break;
+        case 'V': n = 5; break;
+        case 'X': n = 10; break;
+        case 'L': n = 50; break;
+        case 'C': n = 100; break;
+        case 'D': n = 500; break;
+        case 'M': n = 1000; break;
+        };
+        return n;
+
+        };
+
+    for (int i = 0; i < s.size(); i++) {
+
+        if (i < s.size() - 1) {
+
+            if (s[i] == 'I' && s[i + 1] == 'V') {
+                number += toNumber('V') - toNumber('I');
+                i++;
+            }
+            else if (s[i] == 'I' && s[i + 1] == 'X') {
+                number += toNumber('X') - toNumber('I');
+                i++;
+            }
+            else if (s[i] == 'X' && s[i + 1] == 'L') {
+                number += toNumber('L') - toNumber('X');
+                i++;
+            }
+            else if (s[i] == 'X' && s[i + 1] == 'C') {
+                number += toNumber('C') - toNumber('X');
+                i++;
+            }
+            else if (s[i] == 'C' && s[i + 1] == 'D') {
+                number += toNumber('D') - toNumber('C');
+                i++;
+            }
+            else if (s[i] == 'C' && s[i + 1] == 'M') {
+                number += toNumber('M') - toNumber('C');
+                i++;
+            }
+            else {
+                number += toNumber(s[i]);
+            }
+
+        }
+        else {
+            number += toNumber(s[i]);
+        }
+
+    }
+
+    return number;
+
+}
