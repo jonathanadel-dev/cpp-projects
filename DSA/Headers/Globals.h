@@ -162,3 +162,4 @@ int findMedian(vector<vector<int>>& matrix);
 string removeOuterParentheses(string s);
 int maxDepth(string s);
 int romanToInt(string s);
+int myAtoi(string s);

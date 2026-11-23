@@ -114,3 +114,87 @@ int romanToInt(string s) {
     return number;
 
 }
+
+
+// My ATOI
+int myAtoi(string s) {
+
+    int number = 0, sign = 1;
+    bool isNumberFound = false;
+
+    auto toNumber = [](char c) {
+
+        int number = -1;
+
+        switch (c) {
+        case '0': number = 0; break;
+        case '1': number = 1; break;
+        case '2': number = 2; break;
+        case '3': number = 3; break;
+        case '4': number = 4; break;
+        case '5': number = 5; break;
+        case '6': number = 6; break;
+        case '7': number = 7; break;
+        case '8': number = 8; break;
+        case '9': number = 9; break;
+        }
+
+        return number;
+
+        };
+
+    auto addNumber = [&](char c) {
+        if (
+            number > 0 && (
+                number > (INT_MAX / 10) || (number * 10) > INT_MAX - toNumber(c)
+                )
+            ) number = INT_MAX;
+        else if (
+            number < 0 && (
+                number < (INT_MIN / 10) || (number * 10) < INT_MIN + toNumber(c)
+                )
+            ) number = INT_MIN;
+        else {
+            number *= 10;
+            if (sign == 1) {
+                number += toNumber(c);
+            }
+            else {
+                number -= toNumber(c);
+            }
+        }
+        };
+
+    for (int i = 0; i < s.size(); i++) {
+
+        if (number == INT_MAX || number == INT_MIN) return number;
+
+        if (isNumberFound) {
+
+            if (toNumber(s[i]) == -1) break;
+            else {
+                addNumber(s[i]);
+            }
+
+        }
+        else {
+
+            if (toNumber(s[i]) != -1) {
+                isNumberFound = true;
+                addNumber(s[i]);
+            }
+            else if (s[i] == '-' && i < s.size() - 1 && toNumber(s[i + 1]) != -1) {
+                isNumberFound = true;
+                sign = -1;
+            }
+            else if (s[i] == ' ') continue;
+            else if (s[i] == '+' && i < s.size() - 1 && toNumber(s[i + 1]) != -1) continue;
+            else return 0;
+
+        }
+
+    }
+
+    return number;
+
+}
