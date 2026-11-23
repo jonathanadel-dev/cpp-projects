@@ -160,3 +160,4 @@ int findMedian(vector<vector<int>>& matrix);
 
 // Strings
 string removeOuterParentheses(string s);
+int maxDepth(string s);
