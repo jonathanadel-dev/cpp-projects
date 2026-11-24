@@ -165,3 +165,4 @@ int romanToInt(string s);
 int myAtoi(string s);
 long long countSubstrings(string s);
 string longestPalindrome(string s);
+int beautySum(string s);

@@ -260,3 +260,31 @@ string longestPalindrome(string s) {
     return s.substr((bestCenter - bestLength) / 2, bestLength);
 
 }
+
+
+// Beauty sum
+int beautySum(string s) {
+
+    int n = s.size(), sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        vector<int> freq(26, 0);
+        for (int j = i; j < n; j++) {
+
+            freq[s[j] - 97]++;
+
+            int minimum = INT_MAX, maximum = INT_MIN;
+
+            for (int k = 0; k < freq.size(); k++) {
+                if (freq[k] != 0) minimum = min(minimum, freq[k]);
+                maximum = max(maximum, freq[k]);
+            }
+
+            sum += maximum - minimum;
+
+        }
+    };
+
+    return sum;
+
+}

@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 	string number = "321";
-	cout << 0 - 'a';
+	cout << 'a' - 97;
 	//cout << findNthRoot(4, 81);
 
 }
