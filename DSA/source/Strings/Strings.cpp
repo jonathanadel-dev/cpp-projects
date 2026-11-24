@@ -220,3 +220,43 @@ long long countSubstrings(string s) {
     }
     return ans;
 }
+
+
+// Longest palindrome
+string longestPalindrome(string s) {
+
+    string t = "#";
+    for (auto c : s) {
+        t += c;
+        t += "#";
+    }
+
+    int n = t.size();
+    vector<int> r(n, 0);
+    int center = 0, right = 0, bestCenter = 0, bestLength = 0;
+
+    for (int i = 0; i < n; i++) {
+
+        if (i < right) r[i] = min(r[2 * center - i], right - i);
+
+        while (
+            i - r[i] - 1 >= 0 &&
+            i + r[i] + 1 < n &&
+            t[i - r[i] - 1] == t[i + r[i] + 1]
+            ) r[i]++;
+
+        if (i + r[i] > right) {
+            center = i;
+            right = i + r[i];
+        }
+
+        if (r[i] > bestLength) {
+            bestCenter = i;
+            bestLength = r[i];
+        }
+
+    }
+
+    return s.substr((bestCenter - bestLength) / 2, bestLength);
+
+}
