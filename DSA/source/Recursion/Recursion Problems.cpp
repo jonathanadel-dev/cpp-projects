@@ -29,3 +29,36 @@ double myPow(double x, int n) {
     return negative ? 1 / result : result;
 
 }
+
+
+// Generate parentheses
+vector<string> generateParenthesis(int n) {
+
+    vector<string> ans;
+    string currentString;
+
+    function<void(int, int)> comb = [&](int open, int close) {
+        if (currentString.size() == 2 * n) {
+            ans.push_back(currentString);
+            return;
+        }
+
+        if (close < open) {
+            currentString.push_back(')');
+            comb(open, close + 1);
+            currentString.pop_back();
+        }
+
+        if (open < n) {
+            currentString.push_back('(');
+            comb(open + 1, close);
+            currentString.pop_back();
+        }
+
+        };
+
+    comb(0, 0);
+
+    return ans;
+
+}
