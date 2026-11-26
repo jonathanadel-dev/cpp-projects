@@ -118,3 +118,40 @@ vector<vector<int>> superset(vector<int>& nums) {
     return ans;
 
 }
+
+
+// Permute
+vector<vector<int>> permute(vector<int>& nums) {
+
+    int n = nums.size();
+    vector<vector<int>> ans;
+    vector<int> current;
+    vector<bool> used(n, false);
+
+    function<void()> p = [&]() {
+
+        if (current.size() == n) {
+            ans.push_back(current);
+            return;
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            if (used[i]) continue;
+
+            used[i] = true;
+            current.push_back(nums[i]);
+
+            p();
+
+            used[i] = false;
+            current.pop_back();
+
+        }
+
+        };
+
+    p();
+    return ans;
+
+}
