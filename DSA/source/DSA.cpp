@@ -1,17 +1,20 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <map>
+#include <unordered_map>
+#include <queue>
 #include <list>
-#include "../Headers/Globals.h"
+#include <set>
+#include <functional>
+#include <algorithm>
 using namespace std;
+#include "../Headers/Globals.h"
+
 
 
 int main()
 {
-	vector<string> strings = generateABStrings(4);
 
-	for (string s : strings) {
-		cout << s << endl;
-	}
+
 
 }

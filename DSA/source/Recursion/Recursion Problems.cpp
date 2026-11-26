@@ -155,3 +155,90 @@ vector<vector<int>> permute(vector<int>& nums) {
     return ans;
 
 }
+
+
+// Letter combinations
+vector<string> letterCombinations(string digits) {
+
+    vector<string> ans;
+    string current;
+
+
+    // Get integer chars
+    function<vector<char>(char)> getChars = [&](char number) -> vector<char> {
+
+        vector<char> chars;
+
+        switch (number) {
+        case '2':
+            chars.push_back('a');
+            chars.push_back('b');
+            chars.push_back('c');
+            break;
+        case '3':
+            chars.push_back('d');
+            chars.push_back('e');
+            chars.push_back('f');
+            break;
+        case '4':
+            chars.push_back('g');
+            chars.push_back('h');
+            chars.push_back('i');
+            break;
+        case '5':
+            chars.push_back('j');
+            chars.push_back('k');
+            chars.push_back('l');
+            break;
+        case '6':
+            chars.push_back('m');
+            chars.push_back('n');
+            chars.push_back('o');
+            break;
+        case '7':
+            chars.push_back('p');
+            chars.push_back('q');
+            chars.push_back('r');
+            chars.push_back('s');
+            break;
+        case '8':
+            chars.push_back('t');
+            chars.push_back('u');
+            chars.push_back('v');
+            break;
+        case '9':
+            chars.push_back('w');
+            chars.push_back('x');
+            chars.push_back('y');
+            chars.push_back('z');
+            break;
+        }
+
+        return chars;
+
+        };
+
+
+    // Generate strings
+    function<void(int)> generate = [&](int start) {
+
+        if (current.size() == digits.size()) {
+            ans.push_back(current);
+            return;
+        }
+
+        vector<char> chars = getChars(digits[start]);
+
+        for (char c : chars) {
+            current.push_back(c);
+            generate(start + 1);
+            current.pop_back();
+        }
+
+        };
+
+
+    generate(0);
+    return ans;
+
+}

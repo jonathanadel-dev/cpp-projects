@@ -174,3 +174,4 @@ vector<string> generateParenthesis(int n);
 vector<string> generateABStrings(int n);
 vector<vector<int>> superset(vector<int>& nums);
 vector<vector<int>> permute(vector<int>& nums);
+vector<string> letterCombinations(string digits);
