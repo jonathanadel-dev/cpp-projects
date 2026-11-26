@@ -242,3 +242,36 @@ vector<string> letterCombinations(string digits) {
     return ans;
 
 }
+
+
+// Combination sum
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+
+    vector<vector<int>> ans;
+    vector<int> current;
+
+    function<void(int)> sum = [&](int start) {
+
+        // Base case
+        int currentSum = 0;
+        for (int i = 0; i < current.size(); i++) {
+            currentSum += current[i];
+            if (currentSum == target) {
+                ans.push_back(current);
+                return;
+            }
+            else if (currentSum > target) return;
+        }
+
+        for (int i = start; i < candidates.size(); i++) {
+            current.push_back(candidates[i]);
+            sum(i);
+            current.pop_back();
+        }
+
+        };
+
+    sum(0);
+    return ans;
+
+}
