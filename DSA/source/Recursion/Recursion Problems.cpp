@@ -62,3 +62,59 @@ vector<string> generateParenthesis(int n) {
     return ans;
 
 }
+
+
+// Generate AB strings
+vector<string> generateABStrings(int n) {
+    vector<string> ans;
+    string current = "";
+
+    function<void()> generate = [&]() {
+
+        if (current.size() == n) {
+            ans.push_back(current);
+            return;
+        }
+
+        current.push_back('A');
+        generate();
+        current.pop_back();
+
+        current.push_back('B');
+        generate();
+        current.pop_back();
+
+    };
+
+    generate();
+
+    return ans;
+
+}
+
+
+// Superset
+vector<vector<int>> superset(vector<int>& nums) {
+
+    vector<vector<int>> ans;
+    vector<int> current;
+
+    function<void(int)> subset = [&](int start) {
+
+        ans.push_back(current);
+
+        for (int i = start; i < nums.size(); i++) {
+
+            current.push_back(nums[i]);
+            subset(i + 1);
+            current.pop_back();
+
+        }
+
+        };
+
+    subset(0);
+
+    return ans;
+
+}

@@ -8,8 +8,10 @@ using namespace std;
 
 int main()
 {
-	string number = "321";
-	cout << 'a' - 97;
-	//cout << findNthRoot(4, 81);
+	vector<string> strings = generateABStrings(4);
+
+	for (string s : strings) {
+		cout << s << endl;
+	}
 
 }

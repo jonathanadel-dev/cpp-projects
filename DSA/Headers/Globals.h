@@ -171,3 +171,5 @@ int beautySum(string s);
 // Recursion problems
 double myPow(double x, int n);
 vector<string> generateParenthesis(int n);
+vector<string> generateABStrings(int n);
+vector<vector<int>> superset(vector<int>& nums);
