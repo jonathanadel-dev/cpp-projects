@@ -275,3 +275,22 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     return ans;
 
 }
+
+
+// Count good numbers
+int countGoodNumbers(long long n) {
+
+    const int MOD = 1e9 + 7;
+
+    function<long long(long long, long long)> power = [&](long long base, long long exp) -> long long {
+        if (exp == 0) return 1;
+        long long half = power(base, exp / 2);
+        long long result = half * half % MOD;
+        if (exp % 2 != 0) result = result * base % MOD;
+        return result;
+        };
+
+    long long evenCount = (n + 1) / 2, oddCount = n / 2;
+    return power(5, evenCount) * power(4, oddCount) % MOD;
+
+}

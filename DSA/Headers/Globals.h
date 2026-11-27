@@ -176,3 +176,4 @@ vector<vector<int>> superset(vector<int>& nums);
 vector<vector<int>> permute(vector<int>& nums);
 vector<string> letterCombinations(string digits);
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);
+int countGoodNumbers(long long n);
