@@ -181,3 +181,4 @@ void reverseStack(stack<int>& st);
 void pushToBottom(stack<int>& st, int x);
 bool checkSubsequenceSum(vector<int>& nums, int k);
 vector<string> generateBinaryStrings(int n);
+vector<vector<int>> combinationSum2(vector<int>& candidates, int target);
