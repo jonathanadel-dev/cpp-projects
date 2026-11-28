@@ -179,3 +179,4 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target);
 int countGoodNumbers(long long n);
 void reverseStack(stack<int>& st);
 void pushToBottom(stack<int>& st, int x);
+bool checkSubsequenceSum(vector<int>& nums, int k);

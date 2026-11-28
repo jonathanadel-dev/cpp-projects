@@ -322,3 +322,36 @@ void reverseStack(stack<int>& st) {
     reverse();
 
 }
+
+
+// Check subsequence sum
+bool checkSubsequenceSum(vector<int>& nums, int k) {
+
+    bool isFound = false;
+    vector<int> seq;
+
+    function<void(int)> findSeq = [&](int start) {
+
+        int sum = 0;
+        for (int i = 0; i < seq.size(); i++) {
+            sum += seq[i];
+            if (sum == k) {
+                isFound = true;
+                return;
+            }
+            if (sum > k) return;
+        }
+
+        for (int i = start; i < nums.size(); i++) {
+            seq.push_back(nums[i]);
+            findSeq(i + 1);
+            seq.pop_back();
+        }
+
+        };
+
+    findSeq(0);
+
+    return isFound;
+
+}
