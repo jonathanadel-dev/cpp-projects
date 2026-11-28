@@ -355,3 +355,71 @@ bool checkSubsequenceSum(vector<int>& nums, int k) {
     return isFound;
 
 }
+
+
+// Count subsequences with target sum
+int countSubsequenceWithTargetSum(vector<int>& nums, int k) {
+    int count = 0;
+    vector<int> seq;
+
+    function<void(int)> findSeq = [&](int start) {
+
+        int sum = 0;
+        for (int i = 0; i < seq.size(); i++) {
+            sum += seq[i];
+            if (sum == k) {
+                count++;
+                return;
+            }
+            if (sum > k) return;
+        }
+
+        for (int i = start; i < nums.size(); i++) {
+            seq.push_back(nums[i]);
+            findSeq(i + 1);
+            seq.pop_back();
+        }
+
+        };
+
+    findSeq(0);
+
+    return count;
+}
+
+
+// Generate binary strings
+vector<string> generateBinaryStrings(int n) {
+
+    vector<string> ans;
+    string current = "";
+
+    function<void()> generate = [&]() {
+
+        if (current.size() == n) {
+            bool isNonCon = true;
+            for (int i = 0; i < n; i++) {
+                if (i + 1 < n && current[i] == '1' && current[i + 1] == '1') {
+                    isNonCon = false;
+                    break;
+                }
+            }
+            if (isNonCon) ans.push_back(current);
+            return;
+        }
+
+        current.push_back('0');
+        generate();
+        current.pop_back();
+
+        current.push_back('1');
+        generate();
+        current.pop_back();
+
+        };
+
+    generate();
+
+    return ans;
+
+}
