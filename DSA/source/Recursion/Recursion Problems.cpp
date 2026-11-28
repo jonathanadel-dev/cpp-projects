@@ -5,6 +5,7 @@
 #include <queue>
 #include <list>
 #include <set>
+#include <stack>
 #include <functional>
 #include <algorithm>
 using namespace std;
@@ -292,5 +293,32 @@ int countGoodNumbers(long long n) {
 
     long long evenCount = (n + 1) / 2, oddCount = n / 2;
     return power(5, evenCount) * power(4, oddCount) % MOD;
+
+}
+
+
+// Reverse stack
+void reverseStack(stack<int>& st) {
+
+    function<void(int)> pushToBottom = [&](int x) {
+        if (st.empty()) {
+            st.push(x);
+            return;
+        }
+        int top = st.top();
+        st.pop();
+        pushToBottom(x);
+        st.push(top);
+    };
+
+    function<void()> reverse = [&]() {
+        if (st.empty()) return;
+        int el = st.top();
+        st.pop();
+        reverse();
+        pushToBottom(el);
+    };
+
+    reverse();
 
 }

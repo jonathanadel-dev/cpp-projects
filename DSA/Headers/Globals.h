@@ -177,3 +177,5 @@ vector<vector<int>> permute(vector<int>& nums);
 vector<string> letterCombinations(string digits);
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);
 int countGoodNumbers(long long n);
+void reverseStack(stack<int>& st);
+void pushToBottom(stack<int>& st, int x);
